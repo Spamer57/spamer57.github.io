@@ -1,0 +1,134 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Goods",
+    "description" : "Методы интеграции с с Маркетплейсом GOODS."
+  },
+  "schemes" : [ "https" ],
+  "host" : "solodum2.beget.tech",
+  "basePath" : "/v1",
+  "securityDefinitions" : {
+    "UserSecurity" : {
+      "type" : "basic"
+    }
+  },
+  "security" : [ {
+    "UserSecurity" : [ ]
+  } ],
+  "paths" : {
+    "/order/new" : {
+      "post" : {
+        "tags" : [ "новый заказ" ],
+        "parameters" : {
+          "in" : "body",
+          "description" : "создает новый заказ в базе данных коннектора",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "username" ],
+            "properties" : {
+              "shipmentId" : {
+                "type" : "integer"
+              },
+              "shipmentDate" : {
+                "type" : "string",
+                "format" : "date-time"
+              },
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "itemIndex" : {
+                    "type" : "integer"
+                  },
+                  "offerId" : {
+                    "type" : "integer"
+                  },
+                  "price" : {
+                    "type" : "integer"
+                  },
+                  "finalPrice" : {
+                    "type" : "integer"
+                  },
+                  "discounts" : {
+                    "type" : "object",
+                    "properties" : {
+                      "discountType" : {
+                        "type" : "string"
+                      },
+                      "discountAmount" : {
+                        "type" : "integer"
+                      }
+                    }
+                  }
+                }
+              },
+              "label" : {
+                "type" : "object",
+                "properties" : {
+                  "deliveryId" : {
+                    "type" : "integer"
+                  },
+                  "region" : {
+                    "type" : "string"
+                  },
+                  "city" : {
+                    "type" : "string"
+                  },
+                  "address" : {
+                    "type" : "string"
+                  },
+                  "buyerFullName" : {
+                    "type" : "string"
+                  },
+                  "merchantId" : {
+                    "type" : "integer"
+                  },
+                  "merchantName" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "shipping" : {
+                "type" : "object",
+                "properties" : {
+                  "shipmentDate" : {
+                    "type" : "string",
+                    "format" : "date-time"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Заказы успешно отправлены в коннектор"
+          },
+          "400" : {
+            "description" : "Invalid request"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "order" : {
+      "type" : "object",
+      "required" : [ "shipmentId" ],
+      "properties" : {
+        "itemIndex" : {
+          "type" : "integer"
+        },
+        "offerId" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer"
+        },
+        "shipmentId" : {
+          "type" : "integer"
+        }
+      }
+    }
+  }
+}
