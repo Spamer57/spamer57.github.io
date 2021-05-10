@@ -20,8 +20,9 @@
     "/order/new" : {
       "post" : {
         "tags" : [ "новый заказ" ],
-        "parameters" : {
+        "parameters" : [ {
           "in" : "body",
+          "name" : "body",
           "description" : "создает новый заказ в базе данных коннектора",
           "schema" : {
             "type" : "object",
@@ -99,7 +100,7 @@
               }
             }
           }
-        },
+        } ],
         "responses" : {
           "200" : {
             "description" : "Заказы успешно отправлены в коннектор"
