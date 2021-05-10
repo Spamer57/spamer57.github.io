@@ -1,11 +1,11 @@
 {
   "swagger" : "2.0",
   "tags" : [ {
-    "name" : "pet",
-    "description" : "Everything about your Pets",
+    "name" : "order",
+    "description" : "Все заказы",
     "externalDocs" : {
-      "description" : "Find out more",
-      "url" : "http://swagger.io"
+      "description" : "Узнать больше",
+      "url" : "http://goodsapi.ru/"
     }
   }, {
     "name" : "store",
@@ -14,13 +14,14 @@
     "name" : "user",
     "description" : "Operations about user",
     "externalDocs" : {
-      "description" : "Find out more about our store",
-      "url" : "http://swagger.io"
+      "description" : "Узнать больше",
+      "url" : "http://goodsapi.ru/"
     }
   } ],
   "paths" : {
-    "/pet" : {
+    "/новый заказ" : {
       "post" : {
+        "tags" : [ "pet" ],
         "summary" : "Add a new pet to the store",
         "operationId" : "addPet",
         "consumes" : [ "application/json", "application/xml" ],
@@ -633,7 +634,7 @@
     "Order" : {
       "type" : "object",
       "properties" : {
-        "id" : {
+        "shipmentId" : {
           "type" : "integer",
           "format" : "int64"
         },
@@ -645,7 +646,7 @@
           "type" : "integer",
           "format" : "int32"
         },
-        "shipDate" : {
+        "shipmentDate" : {
           "type" : "string",
           "format" : "date-time"
         },
@@ -791,13 +792,14 @@
   },
   "externalDocs" : {
     "description" : " ",
-    "url" : " "
+    "url" : "http://solodum2.beget.tech/"
   },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/X-Way/goods/1.0.0",
   "schemes" : [ "https", "http" ],
   "info" : {
     "description" : "Методы интеграции с с Маркетплейсом GOODS.\n",
-    "version" : "1.0.0"
-  }
+    "version" : "1.0.0",
+    "title" : "Goods"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/X-Way/goods/1.0.0"
 }
