@@ -19,11 +19,12 @@
   "paths" : {
     "/order/new" : {
       "post" : {
-        "tags" : [ "новый заказ" ],
+        "tags" : [ "Получение и подтверждение новых заказов" ],
+        "summary" : "МП отправляет запрос в Коннектор при получение заказа от клиента",
         "parameters" : [ {
           "in" : "body",
           "name" : "body",
-          "description" : "создает новый заказ в базе данных коннектора",
+          "description" : "создает новый заказ в коннекторe",
           "schema" : {
             "type" : "object",
             "required" : [ "username" ],
@@ -107,6 +108,37 @@
           },
           "400" : {
             "description" : "Invalid request"
+          }
+        }
+      }
+    },
+    "/order" : {
+      "get" : {
+        "tags" : [ "Получение и подтверждение новых заказов" ],
+        "summary" : "Продавец запрашивает заказы из коннектора",
+        "operationId" : "placeOrder",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid Order"
+          }
+        }
+      }
+    },
+    "/order/confirm" : {
+      "post" : {
+        "tags" : [ "Получение и подтверждение новых заказов" ],
+        "summary" : "Коннектор отправляет подтверждение заказа",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid Order"
           }
         }
       }
